@@ -4,7 +4,7 @@ module "external-dns" {
   deployment_name        = "external-dns"
   deployment_environment = "${kubernetes_namespace.service_tools.metadata.0.name}"
   deployment_endpoint    = "${var.google_domain_name}"
-  deployment_path        = "./charts/external-dns"
+  deployment_path        = "./components/external-dns"
   enabled                = "true"
   template_custom_vars   = {
     google_project  = "${var.google_project_id}"

@@ -1,0 +1,44 @@
+profile: full
+ceip_policy_disclosed: true # Installation fails if this is set to 'false'
+buildservice:
+  kp_default_repository: "balloray/build-service"
+  kp_default_repository_username: "balloray"
+  kp_default_repository_password: "Devops@2020"
+  tanzunet_username: "balloray@gmail.com"
+  tanzunet_password: "Senator09$"
+  descriptor_name: "tap-1.0.0-full"
+  enable_automatic_dependency_updates: false
+supply_chain: basic
+
+ootb_supply_chain_basic:
+  registry:
+    server: "index.docker.io"
+    repository: "balloray"
+  gitops:
+    ssh_secret: ""
+
+learningcenter:
+  ingressDomain: " learningcenter.example.com"
+
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "balloray.com"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.balloray.com
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/balloray/tap_tools/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.balloray.com
+      cors:
+        origin: http://tap-gui.balloray.com
+
+metadata_store:
+  app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+grype:
+  namespace: "default" # (optional) Defaults to default namespace.
+  targetImagePullSecret: "tap-registry"
