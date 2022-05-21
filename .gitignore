@@ -11,3 +11,5 @@ set-env
 .vscode/settings.json
 *config.json
 .DS_Store
+tap-values.yaml
+
